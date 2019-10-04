@@ -182,6 +182,19 @@ export default class MasonryList extends React.PureComponent {
 					nextProps.columns,
 					nextProps.sorted
 				);
+			} else {
+					if (nextProps.images.length > 0 ){
+					nextProps.images.map(newimages =>{
+						this.state._sortedData.map((val) =>{
+							const selected = val.find(i=> i.id === newimages.id && i.likes !== newimages.likes );
+							if (selected){
+								selected.likes = newimages.likes;
+							}
+						});
+						this.setState({_sortedData: this.state._sortedData});
+					});
+
+				}
 			}
 		}
 	}
